@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Stack, Paper, IconButton } from "@mui/material"
 import SearchIcon from '@mui/icons-material/Search';
-import axios from 'axios';
 
 export default function Heder() {
 
@@ -33,7 +32,7 @@ export default function Heder() {
 
       <Paper component="form"
         onSubmit={hendlesubmit}
-        sx={{ pl: { md: 5 }, borderRadius: "0.3rem" }}>
+        sx={{ pl: { xs: 0, md: 5 }, borderRadius: "0.3rem" }}>
         <input type="search" placeholder='Search' style={{ border: '0' }}
           value={SeacrchTerm}
           onChange={(e) => setSeacrchTerm(e.target.value)} />

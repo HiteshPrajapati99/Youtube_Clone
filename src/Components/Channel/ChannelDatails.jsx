@@ -15,14 +15,36 @@ export default function ChannelDatails() {
     useEffect(() => {
 
         // channel
-        const uri = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
-        axios.get(uri).then((res) => {
+
+        // original url 
+        // const uri = `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${id}&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+
+        // paid url
+
+        const uri = `https://youtube-v31.p.rapidapi.com/channels?part=snippet&id=${id}`
+
+        const options = {
+            params: {
+                maxResults: 50,
+            },
+            headers: {
+                'X-RapidAPI-Key': "KJwZZIJSFimshuivMSVGaiYzkRomp15f2vKjsnK4bKzuUzVLzA",
+                'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+            },
+        };
+
+        axios.get(uri, options).then((res) => {
             setChannelDatails(res.data.items[0])
         })
 
         // videos
-        const url = `https://www.googleapis.com/youtube/v3/search?channelId=${id}&part=snippet%2Cid&order=date&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
-        axios.get(url).then((res) => {
+        // const url = `https://www.googleapis.com/youtube/v3/search?channelId=${id}&part=snippet%2Cid&order=date&maxResults=10&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+
+        // paid url 
+
+        const url = `https://youtube-v31.p.rapidapi.com/search?channelId=${id}&part=snippet%2Cid&order=date&maxResults=10`
+
+        axios.get(url, options).then((res) => {
             setVideos(res.data.items)
         })
 
@@ -35,7 +57,6 @@ export default function ChannelDatails() {
                 <div
                     style={{
                         height: '200px',
-                        background: "rgb(238,174,202)",
                         background: "radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(155,148,233,1) 100%)"
                     }}
                 >

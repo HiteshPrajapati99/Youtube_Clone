@@ -1,11 +1,10 @@
 import Loader from "../Loaders/Loader"
 import { Stack, Box } from "@mui/material"
 import VideoCard from "./VideoCard";
-import ChannelCard from "../Channel/ChannelCard";
 
-export default function Video({ videos, direction, channel }) {
+export default function Video({ videos, direction }) {
 
-  console.log(channel);
+
 
   if (videos.length === 0) return <Loader />;
 

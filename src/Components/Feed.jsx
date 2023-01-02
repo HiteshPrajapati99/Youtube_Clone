@@ -13,9 +13,23 @@ export default function Feed() {
     const [Videos, setVideos] = useState([])
 
     useEffect(() => {
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=${Selectcategory}&safeSearch=none&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+        // original 
 
-        axios.get(url).then((res) => setVideos(res.data.items))
+        // const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=${Selectcategory}&safeSearch=none&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+
+        //paid
+        const url = `https://youtube-v31.p.rapidapi.com/search?part=snippet&maxResults=10&type=video&q=${Selectcategory}&safeSearch=none`
+        const options = {
+            params: {
+                maxResults: 50,
+            },
+            headers: {
+                'X-RapidAPI-Key': "KJwZZIJSFimshuivMSVGaiYzkRomp15f2vKjsnK4bKzuUzVLzA",
+                'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+            },
+        };
+
+        axios.get(url, options).then((res) => setVideos(res.data.items))
 
     }, [Selectcategory])
 
@@ -24,7 +38,7 @@ export default function Feed() {
 
             <Box sx={{ height: { sx: "auto", md: "90vh" }, borderRight: '1px solid #fff', px: { sx: 0, md: 2 } }}>
                 <Slidebar Selectcategory={Selectcategory} setSelectcategory={setSelectcategory} />
-                <Typography variant="body2" sx={{ color: '#fff', mt: "1.5rem", pr: 5 }} >
+                <Typography variant="body2" sx={{ display: { xs: "none", md: "block" }, color: '#fff', mt: "1.5rem", pr: 5 }} >
                     @Hitesh Prajapati
                 </Typography>
             </Box>

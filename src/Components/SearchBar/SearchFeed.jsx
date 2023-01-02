@@ -11,9 +11,21 @@ export default function SearchFeed() {
 
 
   useEffect(() => {
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=${SeacrchTerm}&safeSearch=none&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
+    // const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&type=video&q=${SeacrchTerm}&safeSearch=none&key=${process.env.REACT_APP_YOUTUBE_API_KEY}`
 
-    axios.get(url).then((res) => {
+    // paid url
+    const url = `https://youtube-v31.p.rapidapi.com/search?part=snippet&maxResults=10&type=video&q=${SeacrchTerm}`
+    const options = {
+      params: {
+        maxResults: 50,
+      },
+      headers: {
+        'X-RapidAPI-Key': "KJwZZIJSFimshuivMSVGaiYzkRomp15f2vKjsnK4bKzuUzVLzA",
+        'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com',
+      },
+    };
+
+    axios.get(url, options).then((res) => {
       setSearchVideos(res.data.items)
     })
   }, [SeacrchTerm])

@@ -39,7 +39,7 @@ a {
 
 
 .react-player {
-  height: 77vh !important;
+  height: 60vh !important;
   width: 100% !important;
 }
 
@@ -67,11 +67,7 @@ a {
   }
 }
 
-@media screen and (max-width:800px){
-  .copyright{
-    display:none !important;
-  }
-}
+
 
 @media screen and (max-width: 600px) {
   .scroll-horizontal {

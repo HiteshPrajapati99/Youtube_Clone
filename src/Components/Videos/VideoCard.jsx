@@ -9,7 +9,7 @@ export default function VideoCard({ items }) {
   const { id, snippet } = items;
 
   return (
-    <Card sx={{ width: { xs: '100%', sm: '358px', md: "350px", } }}>
+    <Card sx={{ width: { xs: '100%', sm: '358px', md: "340px", } }}>
       <Link to={`/video/${id.videoId}`}>
         <CardMedia image={snippet?.thumbnails?.high?.url} alt={snippet?.title}
           sx={{ width: { xs: '100%', sm: '358px' }, height: 180 }}
